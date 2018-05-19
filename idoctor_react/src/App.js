@@ -10,6 +10,7 @@ import Login from  './components/pages/login/login'
 import Doctor from  './components/pages/doctor/doctor'
 import Navbar from  'react-materialize/lib/Navbar'
 import NavItem from  'react-materialize/lib/NavItem'
+import notFound from './components/pages/notFound/notFound'
 
 
 
@@ -29,6 +30,7 @@ class App extends Component {
                       <Route exact path="/pharm/:simptom" component={Pharm}/>
                       <Route exact path="/doctor" component={Doctor}/>
                       <Route exact path="/login" component={Login}/>
+                      <Route component={notFound} />
                   </Switch>
               </main>
           </div>
