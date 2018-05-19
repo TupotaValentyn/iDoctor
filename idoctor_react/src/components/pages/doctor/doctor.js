@@ -27,7 +27,21 @@ class Doctor extends React.Component {
         })
     };
     handleSubmit = (e) => {
-        console.log(this.state)
+        const opt = {
+            fio: this.state.fio,
+            birthday: this.state.birthday,
+            writeDay: this.state.writeDay,
+            report: this.state.report
+        }
+        console.log(opt);
+        // axios.post('/pharmacy/appointment', opt)
+        //     .then(response => {
+        //         if (response.data.status == 200) {
+        //             alert("Ваш запис успішно створений");
+        //         } else {
+        //             alert(response.data.errors[0]);
+        //         }
+        //     });
     };
     render () {
         return (
@@ -62,6 +76,7 @@ class Doctor extends React.Component {
                             s={12}
                             value={this.state.report}
                             onChange={this.handleChange}/>
+                        <Input name='on' type='time' onChange={function(e, value) {}} />
                         <Button floating large className='red' waves='light' icon='add' onClick={this.handleSubmit}/>
                     </Row>
                 </div>
