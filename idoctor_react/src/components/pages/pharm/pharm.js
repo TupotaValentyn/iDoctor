@@ -11,6 +11,7 @@ import {
     Marker,
 } from "react-google-maps";
 import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class Map extends React.Component {
     constructor(props) {
@@ -46,7 +47,6 @@ class Map extends React.Component {
             <Marker
                 position={{lat: this.props.lat || 49.431840699999995, lng: this.props.lng || 32.056871199999996}}
             />
-
         </GoogleMap>
     }
 }
@@ -93,7 +93,7 @@ class Pharm extends React.Component {
     }
     render () {
         return (
-            <section className="Pharm">
+            <section className="Pharm" style={{width: '100%'}}>
                 <div className="container">
                     <Card textClassName='black-text'
                           title='Запис до лікаря'
@@ -108,12 +108,32 @@ class Pharm extends React.Component {
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
                     <BootstrapTable className="Table" data={this.state.medicamentsFull}>
-                        <TableHeaderColumn dataField='m_name' isKey  tdStyle={{'background': '#f6f6f6', 'border': '1px solid red', 'padding': '20px 25px'}}>Препарат</TableHeaderColumn>
-                        <TableHeaderColumn dataField='m_price'>Ціна (грн)</TableHeaderColumn>
-                        <TableHeaderColumn dataField='m_available'>Наявність</TableHeaderColumn>
-                        <TableHeaderColumn dataField='apt_name'>Аптека</TableHeaderColumn>
-                        <TableHeaderColumn dataField='apt_place'>Місце розташування</TableHeaderColumn>
-                        <TableHeaderColumn dataField='apt_time'>Час роботи (год)</TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='m_name'
+                            isKey
+                            tdStyle={{'text-align': 'center'}}
+                            thStyle={{'text-align': 'center'}}>Препарат</TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='m_price'
+                            tdStyle={{'text-align': 'center', 'width': '90px'}}
+                            thStyle={{'text-align': 'center', 'width': '90px'}}
+                        >Ціна (грн)</TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='m_available'
+                            tdStyle={{'text-align': 'center'}}
+                            thStyle={{'text-align': 'center'}}>Наявність</TableHeaderColumn>
+                        <TableHeaderColumn
+                            dataField='apt_name'
+                            tdStyle={{'text-align': 'center'}}
+                            thStyle={{'text-align': 'center'}}>Аптека</TableHeaderColumn>
+                        {/*<TableHeaderColumn*/}
+                            {/*dataField='apt_place'*/}
+                            {/*tdStyle={{'text-align': 'center'}}*/}
+                            {/*thStyle={{'text-align': 'center'}}>Місце розташування</TableHeaderColumn>*/}
+                        <TableHeaderColumn
+                            dataField='apt_time'
+                            tdStyle={{'text-align': 'center'}}
+                            thStyle={{'text-align': 'center'}}>Час роботи (год)</TableHeaderColumn>
                     </BootstrapTable>
                     <Card title='Найближчі аптеки'>
                         <MapWithAMarker

@@ -13,16 +13,6 @@ exports.near = async function(req, res) {
     }
     let m = [];
     let apt = [];
-    // console.log(nearAptekas.data.results);
-    // nearAptekas.data.results.forEach(async (it) => {
-    //     apt = await Pharmacy.findOne({name: it.name}).exec();
-    //     if (apt != null) {
-    //         apt.medicaments.forEach((med) => {
-    //             m.push({apt_name: apt.name, apt_place: apt.place,m_name: med.name, m_available: med.available, m_price: med.price});
-    //             // console.log(m);
-    //         });
-    //     }
-    // });
     let i = 0;
     while(true) {
         if (typeof nearAptekas.data.results[i] != 'undefined') {
