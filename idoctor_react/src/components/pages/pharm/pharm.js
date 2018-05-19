@@ -37,7 +37,7 @@ class Pharm extends React.Component {
         };
         axios.post('http://localhost:4000/pharmacy/near', opt)
             .then(response => {
-                this.setState({pharmacy: res.data});
+                this.setState({pharmacy: response.data});
             });
     }
     render () {
