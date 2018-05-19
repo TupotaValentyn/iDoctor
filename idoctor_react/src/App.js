@@ -16,17 +16,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-          <Navbar brand='logo' right>
-              <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-              <NavItem href='components.html'>Components</NavItem>
-          </Navbar>
-          <Switch>
-            <Pharm/>
-            <Route exact path="/simptom" component={Simptom}/>
-            <Route exact path="/registration" component={Registration}/>
-            <Route exact path="/pharm/:simptom" component={Pharm}/>
-            <Route exact path="/login" component={Login}/>
-          </Switch>
+          <div className="content">
+              <Navbar brand='iDoctor' right>
+                  <NavItem onClick={() => console.log('test click')}>Register</NavItem>
+                  <NavItem href='components.html'>Login</NavItem>
+              </Navbar>
+              <main className="main">
+                  <Switch>
+                      <Pharm/>
+                      <Route exact path="/simptom" component={Simptom}/>
+                      <Route exact path="/registration" component={Registration}/>
+                      <Route exact path="/pharm/:simptom" component={Pharm}/>
+                      <Route exact path="/login" component={Login}/>
+                  </Switch>
+              </main>
+          </div>
           <Footer copyrights="&copy 2015 Copyright Text"
                   moreLinks={
                       <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
