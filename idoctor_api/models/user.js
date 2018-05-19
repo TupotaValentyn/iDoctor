@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 
 //User Schema
 const UserSchema = mongoose.Schema({
-    fio: {
+    firstname: {
+        type: String,
+        required: true
+    },
+    lastname: {
+        type: String,
+        required: true
+    },
+    middlename: {
         type: String,
         required: true
     },
@@ -17,5 +25,10 @@ const UserSchema = mongoose.Schema({
 },{
     versionKey: false
 });
+
+UserSchema.virtual('fullname').get(function(){
+    return this.lastname + ' ' + this.firstname + ' ' + this.middlename;
+});
+
 
 const User = module.exports = mongoose.model('User', UserSchema);
