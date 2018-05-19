@@ -11,15 +11,34 @@ class Pharm extends React.Component {
         super(props);
         this.state = {
             simptomInfo: [],
-            meds: []
+            meds: [],
+            pharmacy: []
         }
     }
-    componentDidMount() {
-        axios.get(`http://localhost:4000/pharmacy/simptoms?s=Головний біль`)
+    findUserPosition() {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(position => {
+                resolve(position);
+            }, error => {
+                console.log(error);
+            });
+        });
+    }
+    async componentDidMount() {
+        axios.get(`http://localhost:4000/pharmacy/simptoms?s=`+this.props.match.params.simptom)
             .then(res => {
                 this.setState({simptomInfo: res.data});
                 this.setState({meds: res.data.medicaments});
-            })
+            });
+        const position = await this.findUserPosition();
+        const opt = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        axios.post('http://localhost:4000/pharmacy/near', opt)
+            .then(response => {
+                this.setState({pharmacy: res.data});
+            });
     }
     render () {
         return (
