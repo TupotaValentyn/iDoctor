@@ -7,7 +7,7 @@ import axios from 'axios';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 
 class Pharm extends React.Component {
-    constructor(props) {``
+    constructor(props) {
         super(props);
         this.state = {
             simptomInfo: [],
