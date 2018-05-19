@@ -4,6 +4,7 @@ import CollectionItem from 'react-materialize/lib/CollectionItem'
 import Card from 'react-materialize/lib/Card'
 import './pharm.css'
 import axios from 'axios';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 
 class Pharm extends React.Component {
     constructor(props) {
@@ -36,6 +37,14 @@ class Pharm extends React.Component {
                     <Collection header='Ліки, які допоможуть'>
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
+                    <BootstrapTable>
+                        <TableHeaderColumn dataField='name' isKey>Product ID</TableHeaderColumn>
+                        <TableHeaderColumn dataField='place'>Product Name</TableHeaderColumn>
+                        <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>
+                        <TableHeaderColumn dataField='medicaments'>Product Price</TableHeaderColumn>
+                        <TableHeaderColumn dataField='count'>Product Price</TableHeaderColumn>
+                        <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>
+                    </BootstrapTable>
                 </div>
             </section>
         )
