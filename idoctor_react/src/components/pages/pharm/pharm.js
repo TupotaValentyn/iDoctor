@@ -5,6 +5,54 @@ import Card from 'react-materialize/lib/Card'
 import './pharm.css'
 import axios from 'axios';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
+import {
+    withGoogleMap,
+    GoogleMap,
+    Marker,
+} from "react-google-maps";
+import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
+
+class Map extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            pharmacy: []
+        }
+    }
+    componentDidUpdate(prevState){
+        if (prevState.lat !== this.props.lat){
+            const userPos = new window.google.maps.LatLng(this.props.lat, this.props.lng)
+            this.map.setCenter(userPos);
+        }
+        if (prevState.markers !== this.props.markers && typeof this.props.markers == 'object') {
+            this.setState({pharmacy: this.props.markers});
+        }
+    }
+    componentDidMount(){
+        this.map = this.googleMap.context.__SECRET_MAP_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    }
+    render() {
+        return <GoogleMap
+            defaultZoom={15}
+            defaultCenter={{lat: this.props.lat || 49.431840699999995, lng: this.props.lng || 32.056871199999996}}
+            ref={map => {this.googleMap = map}}
+        >
+            {this.state.pharmacy.map((ph) =>{
+                console.log(ph);
+                return <Marker
+                    position={{lat: ph.geometry.location.lat, lng: ph.geometry.location.lng}}
+                    icon={{url: 'https://u.imageresize.org/873b8269-1b6b-41ee-8a6e-1ca08854ff3a.png'}}
+                />
+            })}
+            <Marker
+                position={{lat: this.props.lat || 49.431840699999995, lng: this.props.lng || 32.056871199999996}}
+            />
+
+        </GoogleMap>
+    }
+}
+
+const MapWithAMarker = withGoogleMap(Map);
 
 class Pharm extends React.Component {
     constructor(props) {
@@ -12,7 +60,8 @@ class Pharm extends React.Component {
         this.state = {
             simptomInfo: [],
             meds: [],
-            pharmacy: []
+            pharmacy: [],
+            coords: []
         }
     }
     findUserPosition() {
@@ -35,6 +84,7 @@ class Pharm extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
+        this.setState({coords: opt});
         axios.post('http://localhost:4000/pharmacy/near', opt)
             .then(response => {
                 this.setState({pharmacy: response.data});
@@ -64,6 +114,14 @@ class Pharm extends React.Component {
                         <TableHeaderColumn dataField='count'>Product Price</TableHeaderColumn>
                         <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>
                     </BootstrapTable>
+                    <Card title='Найближчі аптеки'>
+                        <MapWithAMarker
+                            containerElement={<div style={{ height: `400px` }} />}
+                            mapElement={<div style={{ height: `100%` }} />}
+                                             lat={this.state.coords.lat}
+                                             lng={this.state.coords.lng}
+                            markers={this.state.pharmacy}/>
+                    </Card>
                 </div>
             </section>
         )
