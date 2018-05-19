@@ -11,7 +11,6 @@ import {
     GoogleMap,
     Marker,
 } from "react-google-maps";
-import { InfoBox } from 'react-google-maps/lib/components/addons/InfoBox'
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class Map extends React.Component {
