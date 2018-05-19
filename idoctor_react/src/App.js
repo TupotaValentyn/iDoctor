@@ -7,6 +7,7 @@ import './App.css';
 import Registration from './components/pages/Register/register'
 
 
+
 class App extends Component {
   render() {
     return (
