@@ -1,7 +1,6 @@
 import React from 'react'
 import Input from 'react-materialize/lib/Input'
 import Row from 'react-materialize/lib/Row'
-import Icon from 'react-materialize/lib/Icon'
 import './register.css'
 import Button from 'react-materialize/lib/Button'
 
@@ -47,7 +46,6 @@ class Registration extends React.Component {
     };
 
     render() {
-        console.log(this.state)
         return (
             <div className='form register'>
                 <Row>

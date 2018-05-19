@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, NavLink} from 'react-router-dom'
 import Simptom from './components/pages/simptoms/simptoms'
 import Pharm from './components/pages/pharm/pharm'
 import 'materialize-css/dist/css/materialize.min.css'
@@ -14,14 +14,15 @@ import notFound from './components/pages/notFound/notFound'
 
 
 
+
 class App extends Component {
   render() {
     return (
       <div className="App">
           <div className="content">
               <Navbar brand='iDoctor' right>
-                  <NavItem onClick={() => console.log('test click')}>Register</NavItem>
-                  <NavItem href='components.html'>Login</NavItem>
+                      <NavLink to="/login">Вхід</NavLink>
+                      <NavLink to="/registration">Реєстрація</NavLink>
               </Navbar>
               <main className="main">
                   <Switch>
