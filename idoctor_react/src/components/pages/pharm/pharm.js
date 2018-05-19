@@ -3,7 +3,7 @@ import Collection from 'react-materialize/lib/Collection'
 import CollectionItem from 'react-materialize/lib/CollectionItem'
 import Card from 'react-materialize/lib/Card'
 import './pharm.css'
-// import axios from 'axios';
+import axios from 'axios';
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 
 class Pharm extends React.Component {
@@ -15,31 +15,31 @@ class Pharm extends React.Component {
             pharmacy: []
         }
     }
-    // findUserPosition() {
-    //     return new Promise((resolve, reject) => {
-    //         navigator.geolocation.getCurrentPosition(position => {
-    //             resolve(position);
-    //         }, error => {
-    //             console.log(error);
-    //         });
-    //     });
-    // }
-    // async componentDidMount() {
-    //     axios.get(`http://localhost:4000/pharmacy/simptoms?s=`+this.props.match.params.simptom)
-    //         .then(res => {
-    //             this.setState({simptomInfo: res.data});
-    //             this.setState({meds: res.data.medicaments});
-    //         });
-    //     const position = await this.findUserPosition();
-    //     const opt = {
-    //         lat: position.coords.latitude,
-    //         lng: position.coords.longitude
-    //     };
-    //     axios.post('http://localhost:4000/pharmacy/near', opt)
-    //         .then(response => {
-    //             this.setState({pharmacy: response.data});
-    //         });
-    // }
+    findUserPosition() {
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(position => {
+                resolve(position);
+            }, error => {
+                console.log(error);
+            });
+        });
+    }
+    async componentDidMount() {
+        axios.get(`http://localhost:4000/pharmacy/simptoms?s=`+this.props.match.params.simptom)
+            .then(res => {
+                this.setState({simptomInfo: res.data});
+                this.setState({meds: res.data.medicaments});
+            });
+        const position = await this.findUserPosition();
+        const opt = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
+        axios.post('http://localhost:4000/pharmacy/near', opt)
+            .then(response => {
+                this.setState({pharmacy: response.data});
+            });
+    }
     render () {
         return (
             <section className="Pharm">
@@ -51,10 +51,10 @@ class Pharm extends React.Component {
                     </Card>
                     <Card textClassName='black-text'
                           title='Ймовірна хвороба'>
-                        {/*{this.state.simptomInfo.illness}*/}
+                        {this.state.simptomInfo.illness}
                     </Card>
                     <Collection header='Ліки, які допоможуть'>
-                        {/*{ this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}*/}
+                        { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
                     <BootstrapTable>
                         <TableHeaderColumn dataField='name' isKey>Product ID</TableHeaderColumn>

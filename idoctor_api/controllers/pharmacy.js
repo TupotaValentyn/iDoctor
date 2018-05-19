@@ -7,7 +7,6 @@ exports.near = async function(req, res) {
     var nearAptekas = {};
     while (true) {
         nearAptekas = await searchNearBy(googlePlace.API_KEY, radius, req.body.lat, req.body.lng);
-        console.log(nearAptekas.data);
         if (nearAptekas.data.status != 'ZERO_RESULTS') break;
         else radius += 100;
     }
