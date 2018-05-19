@@ -1,6 +1,5 @@
 import React from 'react'
 import Input from 'react-materialize/lib/Input'
-import Button from 'react-materialize/lib/Button'
 import './simptoms.css'
 import {NavLink} from 'react-router-dom'
 
