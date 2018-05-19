@@ -88,6 +88,7 @@ class Pharm extends React.Component {
         axios.post('http://localhost:4000/pharmacy/near', opt)
             .then(response => {
                 this.setState({pharmacy: response.data});
+                console.log(response.data);
             });
     }
     render () {
@@ -106,13 +107,14 @@ class Pharm extends React.Component {
                     <Collection header='Ліки, які допоможуть'>
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
-                    <BootstrapTable className="Table">
-                        <TableHeaderColumn dataField='name' isKey>Product ID</TableHeaderColumn>
-                        <TableHeaderColumn dataField='place'>Product Name</TableHeaderColumn>
-                        <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>
-                        <TableHeaderColumn dataField='medicaments'>Product Price</TableHeaderColumn>
-                        <TableHeaderColumn dataField='count'>Product Price</TableHeaderColumn>
-                        <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>
+                    <BootstrapTable className="Table" data={this.state.pharmacy}>
+                        <TableHeaderColumn dataField='name' isKey  tdStyle={{'background': '#f6f6f6', 'border': '1px solid red', 'padding': '20px 25px'}}>Аптека</TableHeaderColumn>
+                        <TableHeaderColumn dataField='vicinity' >Місце розташування</TableHeaderColumn>
+                        <TableHeaderColumn dataField=''>Працює?</TableHeaderColumn>
+                        {/*<TableHeaderColumn dataField='workHours'>{{}}Product Price</TableHeaderColumn>*/}
+                        {/*<TableHeaderColumn dataField='medicaments'>Product Price</TableHeaderColumn>*/}
+                        {/*<TableHeaderColumn dataField='count'>Product Price</TableHeaderColumn>*/}
+                        {/*<TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>*/}
                     </BootstrapTable>
                     <Card title='Найближчі аптеки'>
                         <MapWithAMarker

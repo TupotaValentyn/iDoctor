@@ -20,7 +20,7 @@ exports.simptoms = async function(req, res) {
 
 function searchNearBy(API_KEY, radius, lat, lng){
     return new Promise((resolve, reject) => {
-        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=pharmacy&key=`+API_KEY)
+        axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&language=uk&radius=${radius}&type=pharmacy&key=`+API_KEY)
             .then((response) => resolve(response));
     });
 }

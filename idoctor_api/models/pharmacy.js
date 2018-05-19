@@ -8,6 +8,9 @@ const PharmacySchema = mongoose.Schema({
     place: {
         type: String
     },
+    opening_hours: {
+        type: String
+    },
     medicaments: {
         type: Array
     }
