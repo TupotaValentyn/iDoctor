@@ -9,7 +9,7 @@ import Button from 'react-materialize/lib/Button'
 class Registration extends React.Component {
     render() {
         return (
-            <div className='form'>
+            <div className='form register'>
                 <Row>
                     <Input s={12} label="Ім'я" />
                     <Input s={12} label="По Батькові" />
@@ -18,7 +18,7 @@ class Registration extends React.Component {
                     <Input type="password" label="Повторіть Пароль" s={6} />
                     <Input type="email" label="Емеіл" s={12} />
                     <Input s={12} label="Вік" />
-                    <Button waves='light'>Реєстрауція</Button>
+                    <Button waves='light'>Реєстрація</Button>
 
 
                 </Row>
