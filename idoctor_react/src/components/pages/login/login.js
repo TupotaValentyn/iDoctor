@@ -6,8 +6,6 @@ import './login.css'
 
 class Login extends React.Component {
 
-    function
-
     render() {
         return (
             <div className='login'>
