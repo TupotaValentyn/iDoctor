@@ -38,7 +38,6 @@ class Map extends React.Component {
             ref={map => {this.googleMap = map}}
         >
             {this.state.pharmacy.map((ph) =>{
-                console.log(ph);
                 return <Marker
                     position={{lat: ph.geometry.location.lat, lng: ph.geometry.location.lng}}
                     icon={{url: 'https://u.imageresize.org/873b8269-1b6b-41ee-8a6e-1ca08854ff3a.png'}}
@@ -61,7 +60,8 @@ class Pharm extends React.Component {
             simptomInfo: [],
             meds: [],
             pharmacy: [],
-            coords: []
+            coords: [],
+            medicamentsFull: []
         }
     }
     findUserPosition() {
@@ -87,8 +87,8 @@ class Pharm extends React.Component {
         this.setState({coords: opt});
         axios.post('http://localhost:4000/pharmacy/near', opt)
             .then(response => {
-                this.setState({pharmacy: response.data});
-                console.log(response.data);
+                this.setState({pharmacy: response.data.apt});
+                this.setState({medicamentsFull: response.data.med});
             });
     }
     render () {
@@ -107,14 +107,13 @@ class Pharm extends React.Component {
                     <Collection header='Ліки, які допоможуть'>
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
-                    <BootstrapTable className="Table" data={this.state.pharmacy}>
-                        <TableHeaderColumn dataField='name' isKey  tdStyle={{'background': '#f6f6f6', 'border': '1px solid red', 'padding': '20px 25px'}}>Аптека</TableHeaderColumn>
-                        <TableHeaderColumn dataField='vicinity' >Місце розташування</TableHeaderColumn>
-                        <TableHeaderColumn dataField=''>Працює?</TableHeaderColumn>
-                        {/*<TableHeaderColumn dataField='workHours'>{{}}Product Price</TableHeaderColumn>*/}
-                        {/*<TableHeaderColumn dataField='medicaments'>Product Price</TableHeaderColumn>*/}
-                        {/*<TableHeaderColumn dataField='count'>Product Price</TableHeaderColumn>*/}
-                        {/*<TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>*/}
+                    <BootstrapTable className="Table" data={this.state.medicamentsFull}>
+                        <TableHeaderColumn dataField='m_name' isKey  tdStyle={{'background': '#f6f6f6', 'border': '1px solid red', 'padding': '20px 25px'}}>Препарат</TableHeaderColumn>
+                        <TableHeaderColumn dataField='m_price'>Ціна (грн)</TableHeaderColumn>
+                        <TableHeaderColumn dataField='m_available'>Наявність</TableHeaderColumn>
+                        <TableHeaderColumn dataField='apt_name'>Аптека</TableHeaderColumn>
+                        <TableHeaderColumn dataField='apt_place'>Місце розташування</TableHeaderColumn>
+                        <TableHeaderColumn dataField='apt_time'>Час роботи (год)</TableHeaderColumn>
                     </BootstrapTable>
                     <Card title='Найближчі аптеки'>
                         <MapWithAMarker

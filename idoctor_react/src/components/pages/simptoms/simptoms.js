@@ -26,7 +26,7 @@ class Simptom extends React.Component {
                     <Input  type="text" s={12} label="Введіть ваш симптом" name='simptom'
                             value={this.state.simptom}
                             onChange={this.handleChange}/>
-                    <a href={'/simptoms?s=' + this.state.simptom}>Надіслати</a>
+                    <a href={'/pharm/' + this.state.simptom}>Надіслати</a>
                 </div>
             </section>
         )
