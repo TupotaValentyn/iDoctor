@@ -1,12 +1,12 @@
 const axios = require('axios');
 const Simptom = require('../models/simptom');
+const googlePlace = require('../config/googlePlaceApi');
 
 exports.near = async function(req, res) {
-    const API_KEY = 'AIzaSyDKDXIBED6ZQ312aSo0f2O4E33jB7YU7MA';
     let radius = 100;
     var nearAptekas = {};
     while (true) {
-        nearAptekas = await searchNearBy(API_KEY, radius);
+        nearAptekas = await searchNearBy(googlePlace.API_KEY, radius);
         console.log(nearAptekas.data);
         if (nearAptekas.data.status != 'ZERO_RESULTS') break;
         else radius += 100;
