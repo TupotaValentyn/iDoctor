@@ -7,6 +7,7 @@ import './App.css';
 import Footer from 'react-materialize/lib/Footer'
 import Registration from './components/pages/Register/register'
 import Login from  './components/pages/login/login'
+import Doctor from  './components/pages/doctor/doctor'
 import Navbar from  'react-materialize/lib/Navbar'
 import NavItem from  'react-materialize/lib/NavItem'
 
@@ -26,6 +27,7 @@ class App extends Component {
                       <Route exact path="/simptom" component={Simptom}/>
                       <Route exact path="/registration" component={Registration}/>
                       <Route exact path="/pharm/:simptom" component={Pharm}/>
+                      <Route exact path="/doctor" component={Doctor}/>
                       <Route exact path="/login" component={Login}/>
                   </Switch>
               </main>
@@ -46,7 +48,7 @@ class App extends Component {
           >
               <h5 className="white-text">Footer Content</h5>
               <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-          </Footer>;
+          </Footer>
       </div>
     );
   }
