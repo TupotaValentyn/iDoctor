@@ -1,4 +1,8 @@
 .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 500px;
     height: 500px;
+    margin: 0 auto;
 }

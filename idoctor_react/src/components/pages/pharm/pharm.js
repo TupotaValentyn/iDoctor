@@ -106,7 +106,7 @@ class Pharm extends React.Component {
                     <Collection header='Ліки, які допоможуть'>
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
-                    <BootstrapTable>
+                    <BootstrapTable className="Table">
                         <TableHeaderColumn dataField='name' isKey>Product ID</TableHeaderColumn>
                         <TableHeaderColumn dataField='place'>Product Name</TableHeaderColumn>
                         <TableHeaderColumn dataField='workHours'>Product Price</TableHeaderColumn>

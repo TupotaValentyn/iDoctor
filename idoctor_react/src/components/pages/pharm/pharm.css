@@ -1,3 +1,7 @@
 .collection-header h4 , .card-title.grey-text.text-darken-4 {
   color: #ee6e73 !important;
 }
+.table.table-hover.table-bordered  {
+  background: #ee6e73;
+  color: #fff;
+}
