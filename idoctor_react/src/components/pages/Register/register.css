@@ -2,3 +2,17 @@
     width: 500px;
     height: 500px;
 }
+.main {
+    display: flex;
+    justify-content: center;
+}
+.btn.waves-effect.waves-light {
+    background-color: #F44336;
+    margin-bottom: 100px;
+}
+.register .row {
+    margin-bottom: 2%;
+}
+.main {
+    padding: 20px 0;
+}
