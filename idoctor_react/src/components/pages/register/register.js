@@ -11,14 +11,14 @@ class Registration extends React.Component {
         return (
             <div className='form'>
                 <Row>
-                    <Input s={12} label="First Name" />
-                    <Input s={12} label="Mid Name" />
-                    <Input s={12} label="Last Name" />
-                    <Input type="password" label="password" s={6} />
-                    <Input type="password" label="password" s={6} />
-                    <Input type="email" label="Email" s={12} />
-                    <Input s={12} label="Years Old" />
-                    <Button waves='light'>button</Button>
+                    <Input s={12} label="Ім'я" />
+                    <Input s={12} label="По Батькові" />
+                    <Input s={12} label="Прізвище" />
+                    <Input type="password" label="Пароль" s={6} />
+                    <Input type="password" label="Повторіть Пароль" s={6} />
+                    <Input type="email" label="Емеіл" s={12} />
+                    <Input s={12} label="Вік" />
+                    <Button waves='light'>Реєстрауція</Button>
 
 
                 </Row>
