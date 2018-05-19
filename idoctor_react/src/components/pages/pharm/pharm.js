@@ -26,7 +26,7 @@ class Map extends React.Component {
             const userPos = new window.google.maps.LatLng(this.props.lat, this.props.lng)
             this.map.setCenter(userPos);
         }
-        if (prevState.markers !== this.props.markers && typeof this.props.markers == 'object') {
+        if (prevState.markers !== this.props.markers && typeof this.props.markers === 'object') {
             this.setState({pharmacy: this.props.markers});
         }
     }
@@ -74,22 +74,30 @@ class Pharm extends React.Component {
             });
         });
     }
+    simpton() {
+        return new Promise((resolve, reject) => {
+            axios.get(`http://localhost:4000/pharmacy/simptoms?s=` + this.props.match.params.simptom)
+                .then(res => {
+                    this.setState({simptomInfo: res.data});
+                    this.setState({meds: res.data.medicaments});
+                    resolve(res.data.medicaments);
+                });
+        });
+    }
     async componentDidMount() {
-        axios.get(`http://localhost:4000/pharmacy/simptoms?s=`+this.props.match.params.simptom)
-            .then(res => {
-                this.setState({simptomInfo: res.data});
-                this.setState({meds: res.data.medicaments});
-            });
+        const meds = await this.simpton();
         const position = await this.findUserPosition();
         const opt = {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         };
         this.setState({coords: opt});
+        opt.needMeds = meds;
         axios.post('http://localhost:4000/pharmacy/near', opt)
             .then(response => {
                 this.setState({pharmacy: response.data.apt});
                 this.setState({medicamentsFull: response.data.med});
+                console.log(response.data.med);
             });
     }
     render () {

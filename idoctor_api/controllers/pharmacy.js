@@ -18,8 +18,13 @@ exports.near = async function(req, res) {
         if (typeof nearAptekas.data.results[i] != 'undefined') {
             apt = await Pharmacy.findOne({name: nearAptekas.data.results[i].name}).exec();
             apt.medicaments.forEach((med) => {
-                m.push({apt_name: apt.name, apt_place: apt.place,apt_time: apt.opening_hours,m_name: med.name,
-                    m_available: med.available ? 'Є в наявності' : 'Немає в наявності', m_price: med.price});
+                console.log(med.name, req.body.needMeds.indexOf(med.name));
+                if (req.body.needMeds.indexOf(med.name) >= 0) {
+                    m.push({
+                        apt_name: apt.name, apt_place: apt.place, apt_time: apt.opening_hours, m_name: med.name,
+                        m_available: med.available ? 'Є в наявності' : 'Немає в наявності', m_price: med.price
+                    });
+                }
             });
         } else {
             break;
