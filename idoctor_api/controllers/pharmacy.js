@@ -1,4 +1,6 @@
 const axios = require('axios');
+const Simptom = require('../models/simptom');
+
 exports.near = async function(req, res) {
     const API_KEY = 'AIzaSyDKDXIBED6ZQ312aSo0f2O4E33jB7YU7MA';
     let radius = 100;
@@ -10,6 +12,11 @@ exports.near = async function(req, res) {
         else radius += 100;
     }
     res.send(nearAptekas.data.results);
+}
+
+exports.simptoms = async function(req, res) {
+    const simptom = await Simptom.findOne({name: req.query.s}).exec();
+    res.send(simptom);
 }
 
 function searchNearBy(API_KEY, radius){
