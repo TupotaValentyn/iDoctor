@@ -1,0 +1,3 @@
+#root > div > div > nav > div > div > ul.right.hide-on-med-and-down {
+  display: flex;
+}

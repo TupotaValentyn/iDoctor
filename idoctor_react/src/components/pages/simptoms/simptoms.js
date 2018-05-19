@@ -2,6 +2,7 @@ import React from 'react'
 import Input from 'react-materialize/lib/Input'
 import Button from 'react-materialize/lib/Button'
 import './simptoms.css'
+import {NavLink} from 'react-router-dom'
 
 class Simptom extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class Simptom extends React.Component {
                     <Input  type="text" s={12} label="Введіть ваш симптом" name='simptom'
                             value={this.state.simptom}
                             onChange={this.handleChange}/>
-                    <a href={'/pharm/' + this.state.simptom}>Надіслати</a>
+                    <NavLink to={'/pharm/' + this.state.simptom}>Надіслати</NavLink>
                 </div>
             </section>
         )

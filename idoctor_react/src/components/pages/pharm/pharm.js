@@ -4,6 +4,7 @@ import CollectionItem from 'react-materialize/lib/CollectionItem'
 import Card from 'react-materialize/lib/Card'
 import './pharm.css'
 import axios from 'axios';
+import {NavLink} from 'react-router-dom'
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table'
 import {
     withGoogleMap,
@@ -97,7 +98,7 @@ class Pharm extends React.Component {
                 <div className="container">
                     <Card textClassName='black-text'
                           title='Запис до лікаря'
-                          actions={[<a href='#'>Записатись на прийом</a>]}>
+                          actions={[<NavLink to='/doctor'>Записатись на прийом</NavLink>]}>
                         I am a very simple card.
                     </Card>
                     <Card textClassName='black-text'
