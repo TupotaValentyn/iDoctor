@@ -1,3 +1,17 @@
 #root > div > div > nav > div > div > ul.right.hide-on-med-and-down {
   display: flex;
 }
+.rc-time-picker-panel-select:last-child {
+  width: 100%;
+}
+.rc-time-picker-panel-select ul li {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.li.rc-time-picker-panel-select-option-selected {
+  background: #ee6e73;
+}
+.rc-time-picker-panel-select:nth-child(2) {
+  display: none;
+}
