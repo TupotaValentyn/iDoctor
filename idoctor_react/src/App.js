@@ -23,6 +23,7 @@ class App extends Component {
               <Navbar brand='iDoctor' right>
                       <NavLink to="/login">Вхід</NavLink>
                       <NavLink to="/registration">Реєстрація</NavLink>
+                        <NavLink to="/aboutus">Про нас</NavLink>
               </Navbar>
               <main className="main">
                   <Switch>
