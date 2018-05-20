@@ -6,6 +6,7 @@ import Card from 'react-materialize/lib/Card'
 import Col from 'react-materialize/lib/Col'
 import CardTitle from 'react-materialize/lib/CardTitle'
 import './aboutas.css'
+import Treck from './../../../assets/music/Timmy1.mp3'
 
 class AboutUs extends React.Component {
     render() {
@@ -42,8 +43,10 @@ class AboutUs extends React.Component {
                         </li>
                     </ul>
 
+                <audio src={Treck} autoPlay={true} onVolumeChange={1}> </audio>
 
             </div>
+
         );
     }
 }
