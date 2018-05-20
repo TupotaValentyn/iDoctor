@@ -5,6 +5,7 @@
 .main {
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 .btn.waves-effect.waves-light {
     background-color: #F44336;
@@ -13,6 +14,4 @@
 .register .row {
     margin-bottom: 2%;
 }
-.main {
-    padding: 50px 0;
-}
+

@@ -13,9 +13,6 @@ body {
 .content {
   min-height: calc(100vh - 208px);
 }
-.main {
-  margin-top: 15px;
-}
 * {
   box-sizing: border-box;
 }

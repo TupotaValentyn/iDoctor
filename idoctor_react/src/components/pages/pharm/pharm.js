@@ -115,41 +115,41 @@ class Pharm extends React.Component {
                     <Collection header='Ліки, які допоможуть'>
                         { this.state.meds.map(med => <CollectionItem>{med}</CollectionItem>)}
                     </Collection>
-                    <BootstrapTable className="Table" data={this.state.medicamentsFull}>
-                        <TableHeaderColumn
-                            dataField='m_name'
-                            isKey
-                            tdStyle={{'text-align': 'center'}}
-                            thStyle={{'text-align': 'center'}}>Препарат</TableHeaderColumn>
-                        <TableHeaderColumn
-                            dataField='m_price'
-                            tdStyle={{'text-align': 'center', 'width': '90px'}}
-                            thStyle={{'text-align': 'center', 'width': '90px'}}
-                        >Ціна (грн)</TableHeaderColumn>
-                        <TableHeaderColumn
-                            dataField='m_available'
-                            tdStyle={{'text-align': 'center'}}
-                            thStyle={{'text-align': 'center'}}>Наявність</TableHeaderColumn>
-                        <TableHeaderColumn
-                            dataField='apt_name'
-                            tdStyle={{'text-align': 'center'}}
-                            thStyle={{'text-align': 'center'}}>Аптека</TableHeaderColumn>
-                        {/*<TableHeaderColumn*/}
-                            {/*dataField='apt_place'*/}
-                            {/*tdStyle={{'text-align': 'center'}}*/}
-                            {/*thStyle={{'text-align': 'center'}}>Місце розташування</TableHeaderColumn>*/}
-                        <TableHeaderColumn
-                            dataField='apt_time'
-                            tdStyle={{'text-align': 'center'}}
-                            thStyle={{'text-align': 'center'}}>Час роботи (год)</TableHeaderColumn>
-                    </BootstrapTable>
-                    <Card title='Найближчі аптеки'>
+                    <Card title='Найближчі аптеки, де можна придбати ліки'>
                         <MapWithAMarker
                             containerElement={<div style={{ height: `400px` }} />}
                             mapElement={<div style={{ height: `100%` }} />}
                                              lat={this.state.coords.lat}
                                              lng={this.state.coords.lng}
                             markers={this.state.pharmacy}/>
+                        <BootstrapTable className="Table" data={this.state.medicamentsFull}>
+                            <TableHeaderColumn
+                                dataField='m_name'
+                                isKey
+                                tdStyle={{'text-align': 'center'}}
+                                thStyle={{'text-align': 'center'}}>Препарат</TableHeaderColumn>
+                            <TableHeaderColumn
+                                dataField='m_price'
+                                tdStyle={{'text-align': 'center', 'width': '90px'}}
+                                thStyle={{'text-align': 'center', 'width': '90px'}}
+                            >Ціна (грн)</TableHeaderColumn>
+                            <TableHeaderColumn
+                                dataField='m_available'
+                                tdStyle={{'text-align': 'center'}}
+                                thStyle={{'text-align': 'center'}}>Наявність</TableHeaderColumn>
+                            <TableHeaderColumn
+                                dataField='apt_name'
+                                tdStyle={{'text-align': 'center'}}
+                                thStyle={{'text-align': 'center'}}>Аптека</TableHeaderColumn>
+                            {/*<TableHeaderColumn*/}
+                            {/*dataField='apt_place'*/}
+                            {/*tdStyle={{'text-align': 'center'}}*/}
+                            {/*thStyle={{'text-align': 'center'}}>Місце розташування</TableHeaderColumn>*/}
+                            <TableHeaderColumn
+                                dataField='apt_time'
+                                tdStyle={{'text-align': 'center'}}
+                                thStyle={{'text-align': 'center'}}>Час роботи (год)</TableHeaderColumn>
+                        </BootstrapTable>
                     </Card>
                 </div>
             </section>

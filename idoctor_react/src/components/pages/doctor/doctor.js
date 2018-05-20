@@ -44,13 +44,12 @@ class Doctor extends React.Component {
         axios.post('http://localhost:4000/pharmacy/appointment', opt)
             .then(res => {
                 console.log(res);
-                if (res.data.status == 200) {
+                if (res.data.status === 200) {
                     alert("Ваш запис успішно створений");
                 } else {
                     alert(res.data.errors[0]);
                 }
             })
-
     };
     render () {
         return (
