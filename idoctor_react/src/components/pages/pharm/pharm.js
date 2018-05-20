@@ -106,7 +106,7 @@ class Pharm extends React.Component {
                     <Card textClassName='black-text'
                           title='Запис до лікаря'
                           actions={[<NavLink to='/doctor'>Записатись на прийом</NavLink>]}>
-                        I am a very simple card.
+                        За своє здоров'я ви несете відповідальність! Не гайте час: запишіться на прийом до лікаря у вашій лікарні.
                     </Card>
                     <Card textClassName='black-text'
                           title='Ймовірна хвороба'>

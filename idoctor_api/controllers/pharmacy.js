@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Simptom = require('../models/simptom');
 const Pharmacy = require('../models/pharmacy');
+const Appointment = require('../models/appointment');
 const googlePlace = require('../config/googlePlaceApi');
 
 exports.near = async function(req, res) {
@@ -39,7 +40,32 @@ exports.simptoms = async function(req, res) {
 }
 
 exports.appointment = async function(req, res) {
-
+    let errors = [];
+    let check = await Appointment.findOne({doctor_name: req.body.doctor_name, day_ap: req.body.writeDay, time_ap: req.body.time}).exec();
+    if (check != null) {
+        errors.push("Оберіть інший час, оскільки цей вже зайнято");
+    }
+    if (req.body.fio == "") {
+        errors.push("Введіть ПІБ");
+    }
+    if (req.body.doctor_name == "") {
+        errors.push("Введіть лікаря");
+    }
+    if (req.body.writeDay == "") {
+        errors.push("Введіть день ваших відвідин");
+    }
+    if (req.body.time == "") {
+        errors.push("Введіть час ваших відвідин");
+    }
+    if (req.body.report == "") {
+        errors.push("Введіть ваші симптоми");
+    }
+    if (errors.length > 0) {
+        res.send({errors:errors});
+    } else {
+        const ap = await Appointment.create({fio: req.body.fio,doctor_name:req.body.doctor_name,day_ap:req.body.writeDay,time_ap:req.body.time,report:req.body.report});
+        res.send({status: 200});
+    }
 }
 
 function searchNearBy(API_KEY, radius, lat, lng){

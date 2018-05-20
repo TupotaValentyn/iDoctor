@@ -26,7 +26,7 @@ class App extends Component {
               </Navbar>
               <main className="main">
                   <Switch>
-                      <Route exact path="/simptom" component={Simptom}/>
+                      <Route exact path="/" component={Simptom}/>
                       <Route exact path="/registration" component={Registration}/>
                       <Route exact path="/pharm/:simptom" component={Pharm}/>
                       <Route exact path="/doctor" component={Doctor}/>
