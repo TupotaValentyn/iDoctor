@@ -34,6 +34,11 @@ exports.near = async function(req, res) {
     res.send({apt:nearAptekas.data.results,med: m});
 }
 
+exports.Postsimptoms = async function(req, res) {
+    const simptom = await Simptom.findOne({name:{$in: [req.body.msg]}}).exec();
+    res.send(simptom);
+}
+
 exports.simptoms = async function(req, res) {
     const simptom = await Simptom.findOne({name:{$in: [req.query.s]}}).exec();
     res.send(simptom);
