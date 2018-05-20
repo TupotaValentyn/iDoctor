@@ -18,7 +18,6 @@ exports.near = async function(req, res) {
         if (typeof nearAptekas.data.results[i] != 'undefined') {
             apt = await Pharmacy.findOne({name: nearAptekas.data.results[i].name}).exec();
             apt.medicaments.forEach((med) => {
-                console.log(med.name, req.body.needMeds.indexOf(med.name));
                 if (req.body.needMeds.indexOf(med.name) >= 0) {
                     m.push({
                         apt_name: apt.name, apt_place: apt.place, apt_time: apt.opening_hours, m_name: med.name,
@@ -37,6 +36,10 @@ exports.near = async function(req, res) {
 exports.simptoms = async function(req, res) {
     const simptom = await Simptom.findOne({name:{$in: [req.query.s]}}).exec();
     res.send(simptom);
+}
+
+exports.appointment = async function(req, res) {
+
 }
 
 function searchNearBy(API_KEY, radius, lat, lng){
