@@ -1,0 +1,22 @@
+
+.AboutUs-wrapper{
+}
+
+.Ourteam{
+    text-align: center;
+}
+.team-list {
+}
+.AboutUs-wrapper ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+li .col {
+    max-width: 400px;
+}
+li .col:not(:last-child) {
+    margin-right: 20px;
+}
+.AboutUs-wrapper ul:not(.browser-default)>li {
+    margin-right: 20px;
+}
