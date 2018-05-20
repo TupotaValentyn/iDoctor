@@ -2,6 +2,8 @@ import React from 'react'
 import Input from 'react-materialize/lib/Input'
 import Button from 'react-materialize/lib/Button'
 import Row from 'react-materialize/lib/Row'
+import TimePicker from 'rc-time-picker'
+import 'rc-time-picker/assets/index.css'
 
 class Doctor extends React.Component {
     constructor(props) {
@@ -10,6 +12,7 @@ class Doctor extends React.Component {
             fio: '' ,
             birthday: '' ,
             writeDay: '',
+            time: '10:00',
             report: '',
         };
     }
@@ -18,32 +21,21 @@ class Doctor extends React.Component {
         let birthday = event.target.name;
         let writeDay = event.target.name;
         let report = event.target.name;
+        let time = event.target.name;
 
         this.setState({
             [fio]:event.target.value.trim(),
             [birthday]:event.target.value.trim(),
             [writeDay]:event.target.value.trim(),
             [report]:event.target.value.trim(),
+            [time]:event.target.value.trim(),
         })
     };
     handleSubmit = (e) => {
-        const opt = {
-            fio: this.state.fio,
-            birthday: this.state.birthday,
-            writeDay: this.state.writeDay,
-            report: this.state.report
-        }
-        console.log(opt);
-        // axios.post('/pharmacy/appointment', opt)
-        //     .then(response => {
-        //         if (response.data.status == 200) {
-        //             alert("Ваш запис успішно створений");
-        //         } else {
-        //             alert(response.data.errors[0]);
-        //         }
-        //     });
+        console.log(this.state)
     };
     render () {
+        console.log(this.state)
         return (
             <section className="doctor">
                 <div className="container">
@@ -57,8 +49,8 @@ class Doctor extends React.Component {
                             onChange={this.handleChange}/>
                         <Input
                             name='birthday'
-                            label="Дата народження"
-                            type='date'
+                            label="Дата народження (число/місяць/рік)"
+                            type='text'
                             s={12}
                             value={this.state.birthday}
                             onChange={(e, value) => {this.setState({birthday: value})}} />
@@ -69,6 +61,15 @@ class Doctor extends React.Component {
                             s={12}
                             value={this.state.writeDay}
                             onChange={(e, value) => {this.setState({writeDay: value})}} />
+                        <div>
+                            <TimePicker
+                                showSecond={false}
+                                showMinute={false}
+                                placeholder="Час"
+                                onChange={(value) => {this.setState({time: value.format("HH")})}}
+                                disabledHours={() => [0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19, 20, 21, 22, 23]}
+                                minuteStep={30} />
+                        </div>
                         <Input
                             name='report'
                             label='Ваші скарги'
@@ -76,8 +77,7 @@ class Doctor extends React.Component {
                             s={12}
                             value={this.state.report}
                             onChange={this.handleChange}/>
-                        <Input name='on' type='time' onChange={function(e, value) {}} />
-                        <Button floating large className='red' waves='light' icon='add' onClick={this.handleSubmit}/>
+                        <Button waves='light'>button</Button>
                     </Row>
                 </div>
             </section>
